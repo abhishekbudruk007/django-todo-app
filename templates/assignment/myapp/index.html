@@ -1,0 +1,106 @@
+{%extends 'assignment/base.html' %}
+
+{% block theme-css %}
+{% load static %}
+{% endblock %}
+
+{% block content %}
+{% include "assignment/_modal.html" %}
+
+<br>
+<div class="page-content container pt-0">
+
+		<!-- Main content -->
+		<div class="content-wrapper">
+
+			<!-- Content area -->
+			<div class="content">
+
+				<!-- Form layouts -->
+					<div class="row">
+
+						<div class="card">
+							<div class="card-header header-elements-inline">
+								<h5 class="card-title">Todo Tasks</h5>
+								<div class="header-elements">
+									<div class="list-icons">
+
+									</div>
+								</div>
+							</div>
+
+							<div class="table-responsive">
+								<table class="table table-striped">
+									<thead>
+										<tr>
+											<th>Title</th>
+											<th>Description</th>
+											<th>DateTime</th>
+											<th>Created Date</th>
+											<th>Updated Date</th>
+											<th>Status</th>
+											<th>Action</th>
+										</tr>
+									</thead>
+									<tbody>
+										{% for object in object_list %}
+										<tr>
+											<td>{{ object.title }}</td>
+											<td>{{ object.description }}</td>
+											<td>{{ object.dateandtime }}</td>
+											<td>{{ object.created_at }}</td>
+											<td>{{ object.updated_at }}</td>
+											<td>{{ object.status }}</td>
+											<td width="30%"><a href="{% url 'updatetodolist' object.id %}" class="btn btn-success">Update</a> &nbsp; <a href="{% url 'deletetodolist' object.id %}" class="btn btn-danger">Delete</a></td>
+										</tr>
+										{% endfor %}
+									</tbody>
+								</table>
+							</div>
+						</div>
+
+					</div>
+
+				<!-- /form layouts -->
+
+			</div>
+
+			<!-- /content area -->
+
+		</div>
+		<!-- /main content -->
+
+	</div>
+	<!-- /page content -->
+<script>
+				$(".deletecamera").each(function () {
+                    console.log("Delete Camera");
+                    $(this).modalForm({formURL: $(this).data('id')});
+                 });
+</script>
+{%endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

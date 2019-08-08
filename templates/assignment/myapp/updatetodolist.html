@@ -1,0 +1,44 @@
+{% extends 'assignment/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div class="content">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <form method="post" action="">
+                  {% csrf_token %}
+
+                  <div class="modal-body">
+
+                    <div class="{% if form.non_field_errors %}invalid{% endif %} mb-2">
+                      {% for error in form.non_field_errors %}
+                        {{ error }}
+                      {% endfor %}
+                    </div>
+
+                    {% for field in form %}
+                      <div class="form-group">
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{ field }}
+                        <div class="{% if field.errors %} invalid{% endif %}">
+                          {% for error in field.errors %}
+                            <p class="help-block">{{ error }}</p>
+                          {% endfor %}
+                        </div>
+                      </div>
+                    {% endfor %}
+                  </div>
+
+                  <div class="modal-footer">
+                    <button type="submit" class="submit-btn btn btn-primary">Update</button>
+                  </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
