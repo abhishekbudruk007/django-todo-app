@@ -1,8 +1,5 @@
 # django-todo-app
 
-
-# djangotodoapp
-
 This application allows Admin to Add/Update/Delete Todo Tasks , Also Admin Interface to view,search and filter the tasks.  
 The Non-Admin User can View / Update / Delete Tasks .
 
