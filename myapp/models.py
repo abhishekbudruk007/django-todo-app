@@ -1,15 +1,6 @@
 from django.db import models
 
 # Create your models here.
-
-
-#  Title
-#  Description
-#  Date & time of the To-do task.
-#  Status (In progress, completed, pending)
-#  Created at & Modified at
-#  is deleted
-
 CHOICES = (
         ('progress', 'PROGRESS'),
         ('completed', 'COMPLETED'),

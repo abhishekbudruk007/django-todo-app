@@ -1,18 +1,11 @@
-from django.shortcuts import render
-
-# Create your views here.
 from django.views import generic
 from .models import TodoTask
 from .forms import TodoTaskForm
 from .serializers import TodoTaskSerializer
 from django.urls import reverse_lazy ,reverse
 from django.http import HttpResponseRedirect
-from django_datatables_view.base_datatable_view import BaseDatatableView
 
-# class Dashboard(generic.TemplateView):
-#     template_name = 'assignment/myapp/index.html'
-
-
+#This class will provide all Tasks that are not deleted
 class Dashboard(generic.ListView):
     serializer_class = TodoTaskSerializer
     template_name = 'assignment/myapp/index.html'
@@ -21,7 +14,7 @@ class Dashboard(generic.ListView):
         qs = TodoTask.objects.filter(is_deleted=False)
         return qs
 
-
+#This class will Update Tasks
 class UpdateToDoList(generic.UpdateView):
     form_class = TodoTaskForm
     model = TodoTask
@@ -43,6 +36,7 @@ class UpdateToDoList(generic.UpdateView):
                                   )
         )
 
+#This will set is_deleted to True ( That means it is deleted )
 class DeleteToDoList(generic.UpdateView):
     model = TodoTask
     fields = ['is_deleted']
